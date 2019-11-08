@@ -1,28 +1,44 @@
-// write a function to see if two strings are anagrams of each other
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isAnagram = function(s, t) {
 
-function validAnagram(stringOne, stringTwo) {
-
-  if (stringOne.length !== stringTwo.length) {
+  // housekeeping
+  if (s.length !== t.length) {
     return false;
   }
 
-  const lettersOne = {};
-  const lettersTwo = {};
+  // create two hash tables to store letters and their frequency count
+  const mapOne = {};
+  const mapTwo = {};
 
-  for (let i = 0; i < stringOne.length; i++) {
-    lettersOne[stringOne[i]] = (lettersOne[stringOne[i]] || 0) + 1;
+  // add letters into two hash maps
+  for (let i = 0; i < s.length; i++) {
+
+    // hash one
+    if (mapOne[s[i]]) {
+      mapOne[s[i]]++;
+    } else {
+      mapOne[s[i]] = 1;
+    }
+
+    // hash two
+    if (mapTwo[t[i]]) {
+      mapTwo[t[i]]++;
+    } else {
+      mapTwo[t[i]] = 1;
+    }
   }
 
-  for (let k = 0; k < stringTwo.length; k++) {
-    lettersTwo[stringTwo[k]] = (lettersTwo[stringTwo[k]] || 0) + 1;
-  }
-
-  for (let key in lettersOne) {
-    if (lettersOne[key] !== lettersTwo[key]) {
+  // compare two hash tables and make sure the frequency counts are the same for each letter.
+  for (let letter in mapOne) {
+    if (mapOne[letter] !== mapTwo[letter]) {
       return false;
     }
   }
   return true;
-}
+};
 
-console.log(validAnagram('hello', 'oellh')); // true
+console.log(isAnagram('hello', 'olleh'));
