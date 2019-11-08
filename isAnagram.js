@@ -10,31 +10,30 @@ var isAnagram = function(s, t) {
     return false;
   }
 
-  // create two hash tables to store letters and their frequency count
-  const mapOne = {};
-  const mapTwo = {};
+  // create one hash map
+  const letterCount = {};
 
-  // add letters into two hash maps
+  // add letters from first string into hash map and count frequency
   for (let i = 0; i < s.length; i++) {
-
-    // hash one
-    if (mapOne[s[i]]) {
-      mapOne[s[i]]++;
+    if (letterCount[s[i]]) {
+      letterCount[s[i]]++;
     } else {
-      mapOne[s[i]] = 1;
-    }
-
-    // hash two
-    if (mapTwo[t[i]]) {
-      mapTwo[t[i]]++;
-    } else {
-      mapTwo[t[i]] = 1;
+      letterCount[s[i]] = 1;
     }
   }
 
-  // compare two hash tables and make sure the frequency counts are the same for each letter.
-  for (let letter in mapOne) {
-    if (mapOne[letter] !== mapTwo[letter]) {
+  // loop through second string and subtract from hash map
+  for (let j = 0; j < t.length; j++) {
+    if (letterCount[t[j]]) {
+      letterCount[t[j]]--;
+    } else {
+      return false;
+    }
+  }
+
+  // loop through hash map and make sure all letters are zero, otherwise return false
+  for (let letter in letterCount) {
+    if (letterCount[letter] !== 0) {
       return false;
     }
   }
