@@ -10,28 +10,31 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
 var mergeTwoLists = function(l1, l2) {
+  let res = new Node();
+  let current = res;
 
-  const res = new ListNode();
-  const cur = res;
-
-  while (l1 !== null && l2 !== null) {
-    if (l1.val < l2.val) {
-      res.next = new ListNode(l1.val);
+  while (l1 && l2) {
+    if (l1.value < l2.value) {
+      res.next = new Node(l1.value);
       l1 = l1.next;
     } else {
-      res.next = new ListNode(l2.val);
+      res.next = new Node(l2.value);
       l2 = l2.next;
     }
     res = res.next;
   }
 
-  // It's possible that one linked list is shorter than the other so we just
-  // add on the remainder of the last linked list. It's already sorted
+  if (l1) res.next = l1;
+  if (l2) res.next = l2;
 
-  if (l1 !== null) res.next = l1;
-  if (l2 !== null) res.next = l2;
-
-  // return .next because this first element in the linkedlist is empty
-  return cur.next;
+  return current.next;
 };
