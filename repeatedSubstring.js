@@ -4,18 +4,16 @@
  */
 var repeatedSubstringPattern = function(s) {
 
-  const queue = [];
-  queue.push(s[0]);
+  if (s.length < 2) {
+    return false;
+  }
 
-  for (let i = 1; i < s.length; i++) {
-
-    if (queue[0] === s[i]) {
-      queue.shift();
-    } else {
-      queue.push(s[i]);
+  for (let i = 1; i < s.length / 2; i++) {
+    if (s.length % i === 0 && s.slice(0, i).repeat(s.length / i) === s) {
+      return true;
     }
   }
-  return queue.length === 0 ? true : false;
+  return false;
 };
 
-console.log(repeatedSubstringPattern('abab'));
+console.log(repeatedSubstringPattern('ababab'));
