@@ -11,17 +11,21 @@ var selfDividingNumbers = function(left, right) {
     numbers.push(i);
   }
 
-  for (let k = 0; k < numbers.length; k++) {
-    const currentNumber = String(numbers[k]);
-
-    for (let j = 0; j < currentNumber.length; j++) {
-      if (numbers[k] % Number(currentNumber[j]) === 0) {
-        results.push(numbers[k]);
-      }
+  for (let j = 0; j < numbers.length; j++) {
+    if (isSelfDividingNumber(numbers[j])) {
+      results.push(numbers[j]);
     }
   }
-
   return results;
 };
+
+function isSelfDividingNumber(num) {
+  return num
+    .toString()
+    .split('')
+    .map((n) => Number(n))
+    .map((digit) => digit !== 0 && num % digit === 0)
+    .reduce((acc, val) => acc && val);
+}
 
 console.log(selfDividingNumbers(5, 22));
