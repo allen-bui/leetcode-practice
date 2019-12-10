@@ -11,7 +11,7 @@ function moveElementToEnd(array, toMove) {
   // move right element until it doesn't equal the 'toMove' element
   // swap left and right, then increment the left element up
   while (left < right) {
-    while (array[right] === toMove) {
+    while (left < right && array[right] === toMove) {
       right--;
     }
     if (array[left] === toMove) {
