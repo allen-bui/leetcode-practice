@@ -1,15 +1,25 @@
-// Time Complexity = O(N log N)
+// Time Complexity = O(N)
 // Space Complexity = O(1)
 
 
 function findThreeLargestNumbers(array) {
 
-	const length = array.length;
+  const result = [-Infinity, -Infinity, -Infinity];
 
-  // sort array in descending order
-  array.sort((a, b) => a - b);
+  for (let i = 0; i < array.length; i++) {
 
-  // return first three elements
-  return [array[length - 3], array[length - 2], array[length - 1]];
-
+    if (array[i] >= result[2]) {
+      result[0] = result[1];
+      result[1] = result[2];
+      result[2] = array[i];
+    }
+    else if (array[i] >= result[1]) {
+      result[0] = result[1];
+      result[1] = array[i];
+    }
+    else if (array[i] >= result[0]) {
+      result[0] = array[i];
+    }
+  }
+  return result;
 }
