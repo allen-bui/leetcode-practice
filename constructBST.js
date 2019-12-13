@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class BST {
+class BinarySearchTree {
   constructor(value) {
     this.value = value;
     this.left = null;
@@ -34,19 +34,34 @@ class BST {
         }
       }
     }
-    traverse(this);
   }
 
   contains(value) {
-    // Write your code here.
-  }
+    return search(this);
 
-  remove(value) {
-    // Write your code here.
-    // Do not edit the return statement of this method.
-    return this;
+    function search(node) {
+      if (value === node.value) {
+        return true;
+      } else if (value < node.value) {
+        if (node.left !== null) {
+          return search(node.left);
+        } else {
+          return false;
+        }
+      } else if (value > node.value) {
+        if (node.right !== null) {
+          return search(node.right);
+        } else {
+          return false;
+        }
+      }
+    }
   }
 }
 
-// Do not edit the line below.
-exports.BST = BST;
+const tree = new BinarySearchTree(5);
+
+tree.insert(6);
+tree.insert(7);
+
+console.log(tree.contains(8)); // false
