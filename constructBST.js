@@ -60,9 +60,7 @@ class BST {
   }
 
   remove(value) {
-    // Write your code here.
-    // Do not edit the return statement of this method.
-    return this;
+
   }
 }
 
