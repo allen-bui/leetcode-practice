@@ -1,3 +1,6 @@
+// Time Complexity - O(V + E) where V are children and E are edges
+// Space Complexity - O(V)
+
 class Node {
   constructor(name) {
     this.name = name;
