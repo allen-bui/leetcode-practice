@@ -1,16 +1,3 @@
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} l1
- * @param {ListNode} l2
- * @return {ListNode}
- */
-
 class Node {
   constructor(value) {
     this.value = value;
@@ -18,23 +5,36 @@ class Node {
   }
 }
 
-var mergeTwoLists = function(l1, l2) {
-  let res = new Node();
-  let current = res;
+function mergeSortedList(listOne, listTwo) {
 
-  while (l1 && l2) {
-    if (l1.value < l2.value) {
-      res.next = new Node(l1.value);
-      l1 = l1.next;
+  let sortedList = new Node();
+  let current = sortedList;
+
+  while (listOne !== null && listTwo !== null) {
+
+    if (listOne.value < listTwo.value) {
+      sortedList.next = new Node(listOne.value);
+      listOne = listOne.next;
     } else {
-      res.next = new Node(l2.value);
-      l2 = l2.next;
+      sortedList.next = new Node(listTwo.value);
+      listTwo = listTwo.next;
     }
-    res = res.next;
+    sortedList = sortedList.next;
   }
 
-  if (l1) res.next = l1;
-  if (l2) res.next = l2;
+  if (listOne !== null) sortedList.next = listOne;
+  if (listTwo !== null) sortedList.next = listTwo;
 
   return current.next;
-};
+}
+
+const linkedListOne = new Node(5);
+linkedListOne.next = new Node(6);
+linkedListOne.next.next = new Node(10);
+
+const linkedListTwo = new Node(2);
+linkedListTwo.next = new Node(4);
+linkedListTwo.next.next = new Node(7);
+linkedListTwo.next.next.next = new Node(11);
+
+console.log(mergeSortedList(linkedListOne, linkedListTwo)); // 2 -> 4 -> 5 -> 6 -> 7 -> 10 -> 11
