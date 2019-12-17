@@ -5,12 +5,13 @@
  */
 var rotate = function(nums, k) {
 
+  const modK = k % (nums.length / 2);
+
   nums = nums.concat(nums);
 
-  const res = nums.slice((nums.length / 2) - k, nums.length - k);
+  const res = nums.slice(nums.length / 2 - modK, nums.length - modK);
 
   return res;
-
 };
 
-console.log(rotate([1,2,3,4,5,6,7], 6));
+console.log(rotate([1, 2, 3, 4, 5, 6, 7], 21));
