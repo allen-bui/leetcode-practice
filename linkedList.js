@@ -77,6 +77,24 @@ class SinglyLinkedList {
     }
     return oldHead.value;
   }
+
+  unshift(value) {
+
+    const newNode = new Node(value);
+
+    // checks to see if head is null, assign head and tail to new node if true
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+    // set the new node's next to current head, then change current head to new node
+    else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length += 1;
+    return this;
+  }
 }
 
 const ll = new SinglyLinkedList();
@@ -86,5 +104,6 @@ ll.push(2);
 ll.push(3);
 console.log(ll.pop()); // 3
 console.log(ll.shift()); // 5
+ll.unshift(10); // 10 -> 2
 console.log(ll);
 
