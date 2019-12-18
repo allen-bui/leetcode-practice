@@ -64,8 +64,19 @@ class SinglyLinkedList {
     return current.value;
   }
 
+  shift() {
 
+    // keep old head to return value, set head to head.next
+    const oldHead = this.head;
+    this.head = this.head.next;
 
+    // update length, if 0, then reset tail since head will already be null
+    this.length -= 1;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return oldHead.value;
+  }
 }
 
 const ll = new SinglyLinkedList();
@@ -74,3 +85,6 @@ ll.push(5);
 ll.push(2);
 ll.push(3);
 console.log(ll.pop()); // 3
+console.log(ll.shift()); // 5
+console.log(ll);
+
