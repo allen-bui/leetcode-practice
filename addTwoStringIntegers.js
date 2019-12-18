@@ -1,3 +1,6 @@
+// Time Complexity - O(N + M)
+// Space Complexity - O(N)
+
 function sumTwoStrings(str1, str2) {
 
   // ensure str2 is longer
