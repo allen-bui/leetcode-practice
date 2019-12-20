@@ -19,7 +19,6 @@ function sumTwoStrings(str1, str2) {
   // calculate sum of current digits and carry
   for (let i = 0; i < str1.length; i++) {
     const twoDigitSum = str1[i] - 0 + (str2[i] - 0) + carry;
-
     sum += (twoDigitSum % 10) + "";
     carry = Math.floor(twoDigitSum / 10);
   }
