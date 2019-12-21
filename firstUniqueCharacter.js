@@ -7,8 +7,10 @@
  */
 var firstUniqChar = function(s) {
 
+  // create a hash table
   const map = {};
 
+  // first pass, store all letters inside hash table
   for (const letter of s) {
     if (!map[letter]) {
       map[letter] = 1;
@@ -17,6 +19,7 @@ var firstUniqChar = function(s) {
     }
   }
 
+  // second pass, find the first key that equates to one
   for (const key in map) {
     if (map[key] === 1) {
       return s.indexOf(key);
