@@ -1,3 +1,4 @@
+
 /**
  * @param {number[]} nums1
  * @param {number[]} nums2
@@ -6,28 +7,14 @@
 var intersection = function(nums1, nums2) {
 
   const setOne = new Set(nums1);
-  const setTwo = new Set(nums2);
-  const map = {};
-  const res = [];
+  const res = new Set();
 
-  for (let num of [...setOne]) {
-    map[num] = 1;
-  }
-
-  for (let num of [...setTwo]) {
-    if (!map[num]) {
-      map[num] = 1;
-    } else {
-      map[num] += 1;
+  for (let i = 0; i < nums2.length; ++i) {
+    if (setOne.has(nums2[i])) {
+      res.add(nums2[i]);
     }
   }
-
-  for (let key in map) {
-    if (map[key] > 1) {
-      res.push(key - 0);
-    }
-  }
-  return res;
+  return [...res];
 };
 
 console.log (intersection([4,9,5], [9,4,9,8,4]))
