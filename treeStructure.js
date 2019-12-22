@@ -17,13 +17,19 @@ class Tree {
   }
 
   preOrderTraversal(node = this, arr = []) {
-
     arr.push(node.value);
-
     for (let i = 0; i < node.children.length; ++i) {
       const child = node.children[i];
       this.preOrderTraversal(child, arr);
     }
+    return arr;
+  }
+
+  postOrderTraversal(node = this, arr = []) {
+    for (let i = 0; i < node.children.length; ++i) {
+      this.postOrderTraversal(node.children[i], arr);
+    }
+    arr.push(node.value);
     return arr;
   }
 }
@@ -39,6 +45,6 @@ tree.children[1].children.push(new Node(8));
 tree.children[2].children.push(new Node(9));
 tree.children[2].children.push(new Node(10));
 
-// console.log(tree.children[0]);
-
-console.log(tree.inOrderTraversal()); // [1, 2, 5, 6, 3, 7, 8, 4, 9, 10];
+console.log(tree);
+console.log(tree.preOrderTraversal());  // [1, 2, 5, 6, 3, 7, 8, 4, 9, 10]
+console.log(tree.postOrderTraversal()); // [5, 6, 2, 7, 8, 3, 9, 10, 4, 1]
