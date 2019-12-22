@@ -33,6 +33,24 @@ class Tree {
     arr.push(node.value);
     return arr;
   }
+
+  bfs() {
+
+    const resultArray = [];
+    const queue = [];
+    queue.push(this);
+
+    while (queue.length) {
+
+      resultArray.push(queue[0].value);
+
+      for (let i = 0; i < queue[0].children.length; ++i) {
+        queue.push(queue[0].children[i]);
+      }
+      queue.shift();
+    }
+    return resultArray;
+  }
 }
 
 const tree = new Tree(1);
@@ -49,3 +67,4 @@ tree.children[2].children.push(new Node(10));
 console.log(tree);
 console.log(tree.preOrderTraversal());  // [1, 2, 5, 6, 3, 7, 8, 4, 9, 10]
 console.log(tree.postOrderTraversal()); // [5, 6, 2, 7, 8, 3, 9, 10, 4, 1]
+console.log(tree.bfs());                // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
