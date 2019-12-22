@@ -27,7 +27,8 @@ class Tree {
 
   postOrderTraversal(node = this, arr = []) {
     for (let i = 0; i < node.children.length; ++i) {
-      this.postOrderTraversal(node.children[i], arr);
+      const child = node.children[i];
+      this.postOrderTraversal(child, arr);
     }
     arr.push(node.value);
     return arr;
