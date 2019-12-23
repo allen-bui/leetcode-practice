@@ -21,7 +21,7 @@ class BinarySearchTree {
     } else if (node.value > root.value) {
       root.right === null ? (root.right = node) : this.add(value, root.right);
     } else {
-      return '[Error]: Value is already inside binary search tree.'
+      console.log(`[Error]: The value "${value}" is already inside binary search tree.`);
     }
   }
 }
