@@ -50,6 +50,17 @@ class BinarySearchTree {
     }
     return result;
   }
+
+  inOrderTraversal(root = this, result = []) {
+    if (root.left !== null) {
+      this.inOrderTraversal(root.left, result);
+    }
+    result.push(root.value);
+    if (root.right !== null) {
+      this.inOrderTraversal(root.right, result);
+    }
+    return result;
+  }
 }
 
 const tree = new BinarySearchTree(5);
@@ -60,4 +71,4 @@ tree.add(7);
 tree.add(6);
 tree.add(8);
 
-console.log(tree.bfs()); // [5, 3, 7, 2, 4, 6, 8]
+console.log(tree.inOrderTraversal()); // [2, 3, 4, 5, 6, 7, 8]
