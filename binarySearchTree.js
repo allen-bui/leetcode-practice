@@ -35,6 +35,21 @@ class BinarySearchTree {
       return root.right === null ? false : this.search(value, root.right);
     }
   }
+
+  bfs() {
+
+    const queue  = [];
+    const result = [];
+    queue.push(this);
+
+    while (queue.length !== 0) {
+      result.push(queue[0].value);
+      if (queue[0].left !== null) queue.push(queue[0].left);
+      if (queue[0].right !== null) queue.push(queue[0].right);
+      queue.shift();
+    }
+    return result;
+  }
 }
 
 const tree = new BinarySearchTree(5);
@@ -45,6 +60,4 @@ tree.add(7);
 tree.add(6);
 tree.add(8);
 
-console.log(tree);
-console.log(tree.search(8)); // true
-console.log(tree.search(10)); // false
+console.log(tree.bfs()); // [5, 3, 7, 2, 4, 6, 8]
