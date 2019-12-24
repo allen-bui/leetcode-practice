@@ -1,10 +1,10 @@
 // Time Complexity  - O(N)
 // Space Complexity - O(1)
 
-var pivotIndex = function(arr) {
+var pivotIndex = function(nums) {
 
   // declare variables
-  const sum = arr.reduce((a, b) => a + b);
+  const sum = nums.reduce((a, b) => a + b);
   let currentSum = 0;
 
   // loop through array and subtract current index divided by two
