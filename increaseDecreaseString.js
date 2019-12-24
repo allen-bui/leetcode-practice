@@ -9,7 +9,7 @@ var diStringMatch = function(S) {
   const result = [];
 
   // loop through string S, pushing a decrease or increase value based on string character
-  for (let i = 0; i < S.length; ++i) {
+  for (let i = 0; i <= S.length; i++) {
     if (S[i] === 'I') {
       result.push(increase++);
     }
