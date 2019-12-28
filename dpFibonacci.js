@@ -10,7 +10,7 @@ function dpFibonacci(n, memo = {}) {
   if (n in memo) {
     return memo[n];
   }
-  if (n < 2) {
+  if (n <= 2) {
     sum = 1;
     return sum;
   } else {
@@ -20,4 +20,4 @@ function dpFibonacci(n, memo = {}) {
   }
 }
 
-console.log(dpFibonacci(10)); // 89
+console.log(dpFibonacci(10)); // 55
