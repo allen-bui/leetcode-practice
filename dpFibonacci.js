@@ -1,7 +1,12 @@
+// Time Complexity - O(N)
+// Space Complexity - O(N)
+
 function dpFibonacci(n, memo = {}) {
 
+  // declare sum
   let sum;
 
+  // if we've already seen this problem, then return answer
   if (n in memo) {
     return memo[n];
   }
