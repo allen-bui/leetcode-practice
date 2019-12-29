@@ -1,3 +1,6 @@
+// Time Complexity -  O(N)
+// Space Complexity - O(N)
+
 var sumZero = function(n) {
 
   const result = [];
