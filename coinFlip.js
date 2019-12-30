@@ -1,3 +1,6 @@
+// Time Complexity -  O(N)
+// Space Complexity - O(1)
+
 function coinFlip(n) {
   const data = {
     heads: 0,
