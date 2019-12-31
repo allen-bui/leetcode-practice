@@ -1,3 +1,6 @@
+// Time Complexity -  O(N log N)
+// Space Complexity - O(N)
+
 function mergeSort(list) {
 
   if (list.length <= 1) {
