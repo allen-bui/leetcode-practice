@@ -1,8 +1,14 @@
+// Time Complexity -  O(log n)
+// Space Complexity - O(1)
+
 function multiply(x, y) {
+
+  // base case
   if (x < 10 && y < 10) {
     return x * y;
   }
 
+  // recurse and keep breaking down integer until the digit is less than 10
   const xHalf = Math.floor(x.length / 2);
   const yHalf = Math.floor(y.length / 2);
   const a = String(x).substr(0, xHalf);
