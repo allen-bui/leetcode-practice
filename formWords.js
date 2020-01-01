@@ -1,3 +1,6 @@
+// Time Complexity -  O(N^2)
+// Space Complexity - O(N)
+
 var countCharacters = function(words, chars) {
   let remainingChars = {};
   let charCopy;
