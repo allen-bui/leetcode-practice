@@ -17,8 +17,7 @@ var countCharacters = function(words, chars) {
 
   // second pass, loop through words and check validity of each
   // then reset back to original copy
-
-  words.forEach(word => {
+  words.forEach((word) => {
     remainingChars = { ...charCopy };
 
     for (const letter of word) {
@@ -30,10 +29,9 @@ var countCharacters = function(words, chars) {
         remainingChars[letter] -= 1;
         if (remainingChars[letter] < 0) break;
       }
-      sum += word.length;
     }
   });
   return sum;
 };
 
-console.log(countCharacters(["allen"], "allen"));
+console.log(countCharacters(['allen'], 'allen'));
