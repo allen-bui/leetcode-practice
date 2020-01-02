@@ -1,3 +1,6 @@
+// Time Complexity -  O(N)
+// Space Complexity - O(N)
+
 var longestConsecutive = function(nums) {
 
   const setNums = new Set(nums);
