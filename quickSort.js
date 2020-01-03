@@ -9,7 +9,12 @@ function swap(arr, leftIndex, rightIndex) {
 
 function partition(arr, left, right, pivot) {
 
+  // the first while loop makes sure we get every swap needed for partition
   while (left <= right) {
+    // start pointers at each end of the array and
+    // move towards pivot number, performing a swap when
+    // the left side has a bigger number than pivot
+    // and the right side has smaller number than pivot
     while (arr[left] < arr[pivot]) {
       left++;
     }
@@ -22,6 +27,7 @@ function partition(arr, left, right, pivot) {
       right--;
     }
   }
+  // return the left index so we know which pivot point to choose for recursion
   return left;
 }
 
@@ -35,4 +41,4 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
 }
 
 const unsortedArray = [5, 3, 7, 6, 2, 9];
-console.log(quickSort(unsortedArray, 0, unsortedArray.length - 1));
+console.log(quickSort(unsortedArray, 0, unsortedArray.length - 1)); // [2, 3, 5, 6, 7, 9]
