@@ -1,3 +1,6 @@
+// Time Complexity - O(N log N) on Average, depends on pivot chosen
+// Space Complexity - O(log N)
+
 function swap(arr, leftIndex, rightIndex) {
   const temp = arr[leftIndex];
   arr[leftIndex] = arr[rightIndex];
