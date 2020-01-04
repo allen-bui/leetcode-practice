@@ -1,3 +1,6 @@
+// Time Complexity -  O(N^2)
+// Space Complexity - O(N)
+
 var relativeSortArray = function(arr1, arr2) {
 
   const remaining = [];
@@ -31,4 +34,4 @@ var relativeSortArray = function(arr1, arr2) {
 const arr1 = [2,3,1,3,2,4,6,7,9,2,19];
 const arr2 = [2,1,4,3,9,6];
 
-console.log(relativeSortArray(arr1, arr2));
+console.log(relativeSortArray(arr1, arr2)); // [2,2,2,1,4,3,3,9,6,7,19]
