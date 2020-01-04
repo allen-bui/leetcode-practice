@@ -1,3 +1,6 @@
+// Time Complexity -  O(N)
+// Space Complexity - O(N)
+
 /**
  * @param {number} N
  * @return {number}
