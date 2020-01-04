@@ -1,34 +1,42 @@
-// Time Complexity -  O(N^2)
+// Time Complexity -  O(N log N)
 // Space Complexity - O(N)
 
+/**
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @return {number[]}
+ */
 var relativeSortArray = function(arr1, arr2) {
 
+  const hash = {};
   const remaining = [];
-  const found = [];
-  const keySet = new Set(arr2);
+  let keySort = [];
 
-  // loop through original array and push numbers not found in the key
-  // to 'remaining' array so we can sort these numbers later
-  for (let i = 0; i < arr1.length; ++i) {
-    if (!keySet.has(arr1[i])) {
-      remaining.push(arr1[i]);
+  // first pass:  loop through key (arr2) and make an array as value for each element
+  for (const key of arr2) {
+    hash[key] = [];
+  }
+
+  // second pass: loop through original array, and push into hash if value is there
+  //              otherwise push into remaining array
+  for (const number of arr1) {
+    if (hash[number] !== undefined) {
+      hash[number].push(number);
+    } else {
+      remaining.push(number);
     }
   }
 
-  // loop through original array and find values that match first element
-  // inside the key, then pop off the beginning element in the key
-  // keep doing this until key length is equal to zero
-  while (arr2.length) {
-    for (let j = 0; j < arr1.length; ++j) {
-      if (arr1[j] === arr2[0]) {
-        found.push(arr1[j]);
-      }
-    }
-    arr2.shift();
+  // third pass:  loop through key, and concatenate the arrays together
+  for (const key of arr2) {
+    keySort = keySort.concat(hash[key]);
   }
-  // sort the remaingin array and concat with found array
+
+  // sort the remaining numbers
   remaining.sort((a, b) => a - b);
-  return [...found, ...remaining];
+
+  // return concatenated key array and remaining array
+  return keySort.concat(remaining);
 };
 
 const arr1 = [2,3,1,3,2,4,6,7,9,2,19];
