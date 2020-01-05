@@ -1,13 +1,8 @@
-/**
- * @param {number[]} nums
- * @return {string}
- */
 var largestNumber = function(nums) {
+  return nums
+    .sort((a, b) => `${b}${a}` - `${a}${b}`)
+    .join('')
+    .replace(/^0*/, '') || '0';
+}
 
-  // use a hash map with keys 9 through 0 (9,8,7...0)
-  // first pass: loop through each number in array and put in correct hash
-  // second pass: order the numbers in the array by length, if same length
-  //              then order descending
-  // third pass: loop through hash and concatenate string together
-
-};
+console.log(largestNumber([95, 9, 7, 0, 14])); // 9957140
