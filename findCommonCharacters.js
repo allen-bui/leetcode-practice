@@ -5,26 +5,20 @@
  * @Space - O(N)
  */
 var commonChars = function(A) {
-
-  const map = {};
-  const res = [];
-
-  for (word of A) {
-    for (letter of word) {
-      if (map[letter] !== undefined) map[letter] += 1;
-      else map[letter] = 1;
-    }
+  if (A.length === 1) {
+    return [];
   }
 
-  for (key in map) {
-    if (map[key] % A.length === 0) {
-      const repeat = map[key] / A.length;
-      for (let i = 0; i < repeat; ++i) {
-        res.push(key);
-      }
-    }
+  let resultArr = A[0].split('');
+
+  for (const word of A) {
+    const tempArr = word.split('');
+    resultArr = resultArr.filter((char) => {
+      const idx = tempArr.indexOf(char);
+      return idx > -1 ? (tempArr[idx] = true) : false;
+    });
   }
-  return res;
+  return resultArr;
 };
 
 console.log(commonChars(['bella', 'label', 'roller'])); // ['e','l','l']
