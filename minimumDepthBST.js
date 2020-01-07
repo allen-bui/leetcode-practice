@@ -6,13 +6,17 @@
  */
 var minDepth = function(root) {
 
+  // if there is no root, return 0
   if (!root) return 0;
 
+  // declare initial depth and put root node into queue
   let depth = 1;
   let queue = [root];
 
+  // if left and right are null, return depth
   if (!root.left && !root.right) return depth;
 
+  // while the queue is not empty, dequeue and add left & right nodes into the queue
   while (queue.length > 0) {
 
     let node = queue.shift();
