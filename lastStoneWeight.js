@@ -1,14 +1,18 @@
 /**
- * @param {number[]} stones
- * @return {number}
+ * @Time  - O(N^2)
+ * @Space - O(1)
  */
 var lastStoneWeight = function(stones) {
 
+  // while stone length is greater than or equal to two
+  // get the two largest and remove them from the list
+  // smash together and add remainder if y is greater than x
+
   while (stones.length >= 2) {
 
-    let y = Math.max(...stones);
+    const y = Math.max(...stones);
     stones.splice(stones.indexOf(y), 1);
-    let x = Math.max(...stones);
+    const x = Math.max(...stones);
     stones.splice(stones.indexOf(x), 1);
 
     if (x === y) {
