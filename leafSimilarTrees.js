@@ -1,9 +1,8 @@
 // LeetCode Problem #872 - https://leetcode.com/problems/leaf-similar-trees/
 
 /**
- * @param {TreeNode} root1
- * @param {TreeNode} root2
- * @return {boolean}
+ * @Time  - O(N)
+ * @Space - O(N)
  */
 var leafSimilar = function(root1, root2) {
 
