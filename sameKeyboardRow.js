@@ -1,14 +1,8 @@
 // LeetCode Problem #500 - https://leetcode.com/problems/keyboard-row/
 
 /**
- * @Time  -
- * @Space -
- */
-// LeetCode Problem #500 - https://leetcode.com/problems/keyboard-row/
-
-/**
- * @Time  -
- * @Space -
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 /**
  * @param {string[]} words
@@ -16,6 +10,7 @@
  */
 var findWords = function(words) {
 
+  // Use a hash map to store rows
   const result = [];
   const key = {
     'Q': 1, 'W': 1, 'E': 1, 'R': 1, 'T': 1, 'Y': 1, 'U': 1, 'I': 1, 'O': 1, 'P': 1,
@@ -26,6 +21,8 @@ var findWords = function(words) {
     'z': 3, 'x': 3, 'c': 3, 'v': 3, 'b': 3, 'n': 3, 'm': 3,
   };
 
+  // Loop through each word and make sure each letter falls into the same row by checking
+  // against the hash map
   words.forEach(word => {
 
     let row = key[word[0]];
