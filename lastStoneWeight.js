@@ -11,9 +11,12 @@ var lastStoneWeight = function(stones) {
   while (stones.length >= 2) {
 
     const y = Math.max(...stones);
-    stones.splice(stones.indexOf(y), 1);
+    const yPosition = stones.indexOf(y);
+    stones.splice(yPosition, 1);
+
     const x = Math.max(...stones);
-    stones.splice(stones.indexOf(x), 1);
+    const xPosition = stones.indexOf(x);
+    stones.splice(xPosition, 1);
 
     if (x === y) {
       continue;
