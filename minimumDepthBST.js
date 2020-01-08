@@ -19,12 +19,15 @@ var minDepth = function(root) {
   // while the queue is not empty, dequeue and add left & right nodes into the queue
   while (queue.length > 0) {
 
-    let node = queue.shift();
+    let queueLength = queue.length;
 
-    if (!node.left && !node.right) return depth;
-    else {
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
+    for (let i = 0; i < queueLength; ++i) {
+      let node = queue.shift();
+      if (!node.left && !node.right) return depth;
+      else {
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+      }
     }
     depth += 1;
   }
