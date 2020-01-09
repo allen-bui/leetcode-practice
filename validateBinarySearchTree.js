@@ -1,6 +1,8 @@
+// LeetCode Problem #98 - https://leetcode.com/problems/validate-binary-search-tree/
+
 /**
- * @param {TreeNode} root
- * @return {boolean}
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 var isValidBST = function(root) {
   if (!root) {
