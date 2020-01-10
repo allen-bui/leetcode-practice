@@ -21,5 +21,5 @@ var maxNumberOfBalloons = function(text) {
       return 0;
     }
   }
-  return Math.min(Math.floor(balloonMap.l / 2), Math.floor(balloonMap.o / 2));
+  return Math.min(Math.floor(letterMap.l / 2), Math.floor(letterMap.o / 2));
 };
