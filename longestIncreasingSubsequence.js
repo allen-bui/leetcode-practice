@@ -1,6 +1,8 @@
+// LeetCode Problem # 674 - https://leetcode.com/problems/longest-continuous-increasing-subsequence/
+
 /**
- * @param {number[]} nums
- * @return {number}
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 var findLengthOfLCIS = function(nums) {
 
