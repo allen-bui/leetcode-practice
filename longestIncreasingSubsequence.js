@@ -4,27 +4,25 @@
  */
 var findLengthOfLCIS = function(nums) {
 
-  // use two pointers (still and mover), start at 0
+  if (!nums.length) return 0;
+
   let current = 1;
   let max = 1;
   let still = 0;
   let mover = 1;
 
-  // increment mover until current index is lower than previous index
-  while (mover !== nums.length - 1) {
-
+  while (mover !== nums.length) {
     if (nums[mover] <= nums[mover - 1]) {
-      max = Math.max(current, max);
-      current = 1;
       still = mover;
+      max = Math.max(max, current);
       mover += 1;
-    }
-    else {
+      current = 1;
+    } else {
       current += 1;
       mover += 1;
     }
   }
-  return max;
+  return Math.max(max, current);
 };
 
-console.log(findLengthOfLCIS([1, 3, 5, 6, 7]));
+console.log(findLengthOfLCIS([1, 3, 5, 4, 2, 3, 4, 5]));
