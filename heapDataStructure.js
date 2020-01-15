@@ -8,32 +8,30 @@
 
 class MaxBinaryHeap {
   constructor() {
-    this.values = [];
+    this.values = [41, 39, 33, 18, 27, 12];
   }
 
   insert(value) {
-
     this.values.push(value);
-    const index = this.values.length - 1;
-    const parentIndex = Math.floor((index - 1) / 2);
+    this.bubbleUp();
+  }
+
+  bubbleUp() {
+
+    let index = this.values.length - 1;
+    let parentIndex = Math.floor((index - 1) / 2);
 
     while (this.values[index] > this.values[parentIndex] && parentIndex !== -1) {
       const temp = this.values[parentIndex];
       this.values[parentIndex] = this.values[index];
       this.values[index] = temp;
+      index = parentIndex;
+      parentIndex = Math.floor((index - 1) / 2);
     }
-
-    // insert 100
-    //
-    //         50
-    //       /    \
-    //     17      35
-    //    /  \    /  \
-    //   10  15  20  34
-    //
-    // Array Form
-    //
-    // [50, 17, 35, 10, 15, 20, 34]
-
   }
 }
+
+const heap = new MaxBinaryHeap();
+heap.insert(55);
+
+console.log(heap);
