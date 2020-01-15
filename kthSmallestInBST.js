@@ -6,7 +6,6 @@
  */
 
 function kthSmallest(root, k) {
-
   /*
   Pseudocode
   ----------
@@ -20,18 +19,13 @@ function kthSmallest(root, k) {
   return result[k - 1];
 
   function inOrderTraversal(root) {
-    if (!root) {
-      return;
-    }
-    if (root.left !== null) {
-      inOrderTraversal(root.left);
-    }
+    if (!root) return;
+    if (root.left !== null) inOrderTraversal(root.left);
+    if (result.length >= k) return;
     result.push(root.value);
-    if (root.right !== null) {
-      inOrderTraversal(root.right);
-    }
+    if (root.right !== null) inOrderTraversal(root.right);
   }
-};
+}
 
 class Node {
   constructor(value) {
@@ -47,4 +41,4 @@ tree.right = new Node(9);
 tree.left.left = new Node(3);
 tree.left.right = new Node(6);
 
-console.log(kthSmallest(tree, 3));
+console.log(kthSmallest(tree, 3)); // 6
