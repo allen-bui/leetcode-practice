@@ -50,27 +50,29 @@ class MaxBinaryHeap {
 
     while (this.values[index] < this.values[childLeftIndex] || this.values[index] < this.values[childRightIndex]) {
       if (this.values[childLeftIndex] > this.values[childRightIndex]) {
-        // swap
-        const temp = this.values[index];
-        this.values[index] = this.values[childLeftIndex];
-        this.values[childLeftIndex] = temp;
-        // update new index and child nodes
-        index = childLeftIndex;
+        swapAndUpdate.call(this, index, childLeftIndex);
         childLeftIndex = (2 * index) + 1;
         childRightIndex = (2 * index) + 2;
       }
       else {
-        // swap
-        const temp = this.values[index];
-        this.values[index] = this.values[childRightIndex];
-        this.values[childRightIndex] = temp;
-        // update new index and child nodes
-        index = childRightIndex;
+        swapAndUpdate.call(this, index, childRightIndex);
         childLeftIndex = (2 * index) + 1;
         childRightIndex = (2 * index) + 2;
       }
     }
-    return maxValue
+    return maxValue;
+
+    // helper functions
+    function swapAndUpdate(currentIndex, newIndex) {
+
+      // swap
+      const temp = this.values[currentIndex];
+      this.values[currentIndex] = this.values[newIndex];
+      this.values[newIndex] = temp;
+
+      // update new index and child nodes
+      currentIndex = newIndex;
+    }
   }
 }
 
