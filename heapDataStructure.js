@@ -12,20 +12,30 @@ class MaxBinaryHeap {
   }
 
   insert(value) {
+
+    // Pseudocode
+    //
+    // 1. Push the value to the end
+    // 2. Bubble up the value until it reaches the correct position by check parent
+
+    // 1
     this.values.push(value);
-    this.bubbleUp();
-  }
 
-  bubbleUp() {
-    let index = this.values.length - 1;
-    let parentIndex = Math.floor((index - 1) / 2);
+    // 2
+    bubbleUp.call(this);
 
-    while (this.values[index] > this.values[parentIndex] && parentIndex !== -1) {
-      const temp = this.values[parentIndex];
-      this.values[parentIndex] = this.values[index];
-      this.values[index] = temp;
-      index = parentIndex;
-      parentIndex = Math.floor((index - 1) / 2);
+    // helper functions
+    function bubbleUp() {
+      let index = this.values.length - 1;
+      let parentIndex = Math.floor((index - 1) / 2);
+
+      while (this.values[index] > this.values[parentIndex] && parentIndex !== -1) {
+        const temp = this.values[parentIndex];
+        this.values[parentIndex] = this.values[index];
+        this.values[index] = temp;
+        index = parentIndex;
+        parentIndex = Math.floor((index - 1) / 2);
+      }
     }
   }
 
@@ -64,13 +74,9 @@ class MaxBinaryHeap {
 
     // helper functions
     function swapAndUpdate(currentIndex, newIndex) {
-
-      // swap
       const temp = this.values[currentIndex];
       this.values[currentIndex] = this.values[newIndex];
       this.values[newIndex] = temp;
-
-      // update new index and child nodes
       currentIndex = newIndex;
     }
   }
