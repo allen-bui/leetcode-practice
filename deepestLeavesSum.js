@@ -1,6 +1,8 @@
+// LeetCode Problem # 1302 - https://leetcode.com/problems/deepest-leaves-sum
+
 /**
- * @param {TreeNode} root
- * @return {number}
+ * @Time  - O(N)
+ * @Space - O(N) where N is based on the number of levels
  */
 var deepestLeavesSum = function(root, level = 1) {
 
