@@ -31,27 +31,40 @@ class MaxBinaryHeap {
 
   getMax() {
 
+    // Pseudocode
+    //
+    // 1. Get max value
+    // 2. Replace root with end element
+    // 3. Bubble down the new root to correct position by continuously swapping
+
+    // 1
     const maxValue = this.values.shift();
+
+    // 2
     this.values.unshift(this.values.pop());
 
+    // 3
     let index = 0;
     let childLeftIndex = (2 * index) + 1;
     let childRightIndex = (2 * index) + 2;
 
     while (this.values[index] < this.values[childLeftIndex] || this.values[index] < this.values[childRightIndex]) {
-
       if (this.values[childLeftIndex] > this.values[childRightIndex]) {
+        // swap
         const temp = this.values[index];
         this.values[index] = this.values[childLeftIndex];
         this.values[childLeftIndex] = temp;
+        // update new index and child nodes
         index = childLeftIndex;
         childLeftIndex = (2 * index) + 1;
         childRightIndex = (2 * index) + 2;
       }
       else {
+        // swap
         const temp = this.values[index];
         this.values[index] = this.values[childRightIndex];
         this.values[childRightIndex] = temp;
+        // update new index and child nodes
         index = childRightIndex;
         childLeftIndex = (2 * index) + 1;
         childRightIndex = (2 * index) + 2;
@@ -59,19 +72,10 @@ class MaxBinaryHeap {
     }
     return maxValue
   }
-
-
-
-
-
-
-
-
 }
 
 const heap = new MaxBinaryHeap();
 heap.insert(55);
-heap.insert(999);
-heap.insert(998);
+console.log(heap.getMax());
 
 console.log(heap);
