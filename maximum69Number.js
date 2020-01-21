@@ -1,10 +1,12 @@
-// https://leetcode.com/problems/maximum-69-number/
+// LeetCode Problem #1323 - https://leetcode.com/problems/maximum-69-number/
 
 /**
- * @param {number} num
- * @return {number}
+ * @Time  - O(N)
+ * @Space - O(N)
  */
 var maximum69Number  = function(num) {
+
+  // convert number to array
   // loop through nums
   // find the first six and replace it with a nine
   // return nums
