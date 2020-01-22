@@ -1,6 +1,6 @@
 /**
- * @param {string} s
- * @return {number}
+ * @Time  - O(N^2)
+ * @Space - O(1)
  */
 var lengthOfLongestSubstring = function(s) {
 
@@ -8,10 +8,13 @@ var lengthOfLongestSubstring = function(s) {
   Pseudocode
   ----------
   1. create a max and current variable
-  2. use two for loops, outer loop to loop through each letter
-  3. inner loop will add words into a hash set and check to see if it's been seen before
-  4. compare current to max, and take the greater length
+  2. add edge case where s length is one
+  3. use two for loops, outer loop to loop through each letter
+  4. inner loop will add words into a hash set and check to see if it's been seen before
+  5. compare current to max, and take the greater length
   */
+
+  if (s.length === 1) return 1;
 
   let current = '';
   let max = 0;
@@ -37,4 +40,4 @@ var lengthOfLongestSubstring = function(s) {
   return max;
 };
 
-console.log(lengthOfLongestSubstring('bbbbb'));
+console.log(lengthOfLongestSubstring('bbbbb')); // 1
