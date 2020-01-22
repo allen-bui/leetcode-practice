@@ -1,9 +1,12 @@
+// LeetCode Problem # 1309 - https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
+
 /**
- * @param {string} s
- * @return {string}
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 var freqAlphabets = function(s) {
 
+  // create a hash map
   const letterMap = {
     '1': 'a',
     '2': 'b',
@@ -33,7 +36,12 @@ var freqAlphabets = function(s) {
     '26': 'z',
   };
 
+  // create an empty string
   let result = '';
+
+  // loop through each letter in the string and check two characters in front
+  // if it is a '#' symbol, then increment i by 2 and add previous two numbers together
+  // and get map of that, otherwise just get current number
   for (let i = 0; i < s.length; ++i) {
     result += letterMap[s[i + 2] === "#" ? (i += 2, s[i - 2] + s[i - 1]) : s[i]];
   }
