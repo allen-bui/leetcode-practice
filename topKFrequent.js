@@ -1,7 +1,8 @@
+// LeetCode Problem # 347 - https://leetcode.com/problems/top-k-frequent-elements/
+
 /**
- * @param {number[]} nums
- * @param {number} k
- * @return {number[]}
+ * @Time  - O(N log N)
+ * @Space - O(N)
  */
 var topKFrequent = function(nums, k) {
   /*
