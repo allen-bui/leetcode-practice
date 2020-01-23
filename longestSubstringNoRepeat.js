@@ -28,16 +28,16 @@ var lengthOfLongestSubstring = function(s) {
     for (let j = 1; j < s.length; ++j) {
 
       if (seen[s[j]] === undefined) {
-        current += s[j];
         seen[s[j]] = true;
+        current += s[j];
+        if (current.length === s.length) return current.length;
         continue;
       }
-      max = Math.max(current.length, max);
-      seen = {};
-      current = '';
     }
-  }
-  return max;
+    max = Math.max(current.length, max);
+    seen = {};
+    current = '';
+  }  return max;
 };
 
-console.log(lengthOfLongestSubstring('bbbbb')); // 1
+console.log(lengthOfLongestSubstring('pwwkew')); // 1
