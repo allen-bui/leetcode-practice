@@ -1,3 +1,8 @@
+/**
+ * @Time  - O(N)
+ * @Space - O(1)
+ */
+
 function frequency(s) {
   /*
   Pseudocode
