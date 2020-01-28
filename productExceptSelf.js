@@ -1,25 +1,27 @@
-// Time Complexity - O(N)
-// Space Complexity - O(N)
+// LeetCode Problem # 238 - https://leetcode.com/problems/product-of-array-except-self/
 
 /**
- * @param {number[]} nums
- * @return {number[]}
+ * @Time  - O(N)
+ * @Space - O(N)
  */
 var productExceptSelf = function(nums) {
 
-  // declare variables
-  const result = new Array(nums.length).fill(1);
-  let multiplier = 1;
+  const left = new Array(nums.length).fill(1);
+  const right = new Array(nums.length).fill(1);
+  const result = [];
 
-  // loop through nums array, multiply everything on the left side together
-  for (let i = 1; i < nums.length; i++) {
-    result[i] = nums[i - 1] * result[i - 1];
+  for (let i = 1; i < nums.length; ++i) {
+    left[i] = nums[i - 1] * left[i - 1];
   }
 
-  // loop through nums array, multiply everything on the right side together
-  for (let j = nums.length - 1; j > 0; j--) {
-    result[j] = result[j] * multiplier;
-    multiplier = nums[j] * multiplier;
+  for (let j = nums.length - 2; j > -1; --j) {
+    right[j] = nums[j + 1] * right[j + 1];
+  }
+
+  for (let k = 0; k < nums.length; ++k) {
+    result[k] = left[k] * right[k];
   }
   return result;
 };
+
+console.log(productExceptSelf([1, 2, 3, 4])); // [24, 12, 8, 6]
