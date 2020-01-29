@@ -1,5 +1,10 @@
 // LeetCode Problem # 54 - // https://leetcode.com/problems/spiral-matrix/
 
+/**
+ * @Time  - O(N)
+ * @Space - O(N)
+ */
+
 var spiralOrder = function(matrix) {
 
   const result = [];
@@ -15,16 +20,19 @@ var spiralOrder = function(matrix) {
 
   while (colBegin <= colEnd && rowBegin <= rowEnd) {
 
+    // move right
     for (let i = colBegin; i <= colEnd; ++i) {
       result.push(matrix[rowBegin][i]);
     }
     rowBegin++;
 
+    // move down
     for (let i = rowBegin; i < rowEnd; ++i) {
       result.push(matrix[i][colEnd]);
     }
     colEnd--;
 
+    // move left
     if (rowBegin <= rowEnd) {
       for (let i = colEnd; i >= colBegin; --i) {
         result.push(matrix[rowEnd][i]);
@@ -32,6 +40,7 @@ var spiralOrder = function(matrix) {
     }
     rowEnd--;
 
+    // move up
     if (colBegin <= colEnd) {
       for (let i = rowEnd; i >= rowBegin; --i) {
         result.push(matrix[i][colBegin]);
@@ -48,4 +57,4 @@ const matrix = [
   [11, 12, 13, 14, 15],
 ];
 
-console.log(spiralOrder(matrix)); // [ 1, 2, 3, 4, 5, 10, 14, 13, 12, 11, 6, 7, 8, 9 ]
+console.log(spiralOrder(matrix)); // [1,2,3,6,9,8,7,4,5]
