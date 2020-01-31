@@ -1,9 +1,10 @@
 // Pre-Order Tree Traversal
-//
-//     1
-//   2  3
-//  4 5 6 7
+/**
+ * @Time -  O(N)
+ * @Space - O(N)
+ */
 
+// define the class node
 class Node {
   constructor(value) {
     this.value = value;
@@ -12,6 +13,7 @@ class Node {
   }
 }
 
+// construct the tree
 const tree = new Node(1);
 tree.left = new Node(2);
 tree.right = new Node(3);
@@ -21,6 +23,7 @@ tree.right.left = new Node(6);
 tree.right.right = new Node(7);
 
 var preorder = function(root, arr = []) {
+  // Pre-Order is Node, then Left, then Right
   arr.push(root.value);
   if (root.left !== null) preorder(root.left, arr);
   if (root.right !== null) preorder(root.right, arr);
