@@ -1,6 +1,8 @@
+// LeetCode Problem # 485 - https://leetcode.com/problems/max-consecutive-ones/
+
 /**
- * @param {number[]} nums
- * @return {number}
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 var findMaxConsecutiveOnes = function(nums) {
 
