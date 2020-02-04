@@ -3,21 +3,16 @@
 
 function maximumSubArray(arr, n) {
 
+  let maxSum = 0;
   let currentSum = 0;
-  let maxSum;
 
-  // loop through array up to nth-digit and add up sum
-  // set max sum equal to the current sum after loop;
-  for (let i = 0; i < n; ++i) {
+  for (let i = 0; i < number; ++i) {
     currentSum += arr[i];
   }
   maxSum = currentSum;
-
-  // subtract the previous element, then add the next element
-  // set max sum to whichever is higher, currentSum and maxSum
-  for (let j = n - 1; j < arr.length - 1; ++j) {
-    currentSum = currentSum - arr[j - n + 1] + arr[j + 1];
-    maxSum = Math.max(currentSum, maxSum);
+  for (let i = number - 1; i < arr.length - 1; ++i) {
+    currentSum = currentSum - arr[i - number + 1] + arr[i + 1];
+    maxSum = Math.max(maxSum, currentSum);
   }
   return maxSum;
 }
