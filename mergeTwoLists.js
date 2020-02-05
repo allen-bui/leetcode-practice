@@ -8,36 +8,34 @@ class Node {
   }
 }
 
-function mergeSortedList(listOne, listTwo) {
+function mergeSortedLists(listOne, listTwo) {
 
-  let sortedList = new Node();
-  let current = sortedList;
+  let mergeSortedLists = new Node();
+  let current = mergeSortedLists;
 
-  while (listOne !== null && listTwo !== null) {
+  while (listOne && listTwo) {
 
     if (listOne.value < listTwo.value) {
-      sortedList.next = new Node(listOne.value);
+      mergeSortedLists.next = new Node(listOne.value);
       listOne = listOne.next;
     } else {
-      sortedList.next = new Node(listTwo.value);
+      mergeSortedLists.next = new Node(listTwo.value);
       listTwo = listTwo.next;
     }
-    sortedList = sortedList.next;
+    mergeSortedLists = mergeSortedLists.next;
   }
 
-  if (listOne !== null) sortedList.next = listOne;
-  if (listTwo !== null) sortedList.next = listTwo;
+  if (listOne) mergeSortedLists.next = listOne;
+  if (listTwo) mergeSortedLists.next = listTwo;
 
   return current.next;
 }
 
-const linkedListOne = new Node(5);
-linkedListOne.next = new Node(6);
-linkedListOne.next.next = new Node(10);
+const linkedListOne = new Node(1);
+linkedListOne.next = new Node(3);
 
 const linkedListTwo = new Node(2);
 linkedListTwo.next = new Node(4);
-linkedListTwo.next.next = new Node(7);
-linkedListTwo.next.next.next = new Node(11);
+linkedListTwo.next.next = new Node(5);
 
-console.log(mergeSortedList(linkedListOne, linkedListTwo)); // 2 -> 4 -> 5 -> 6 -> 7 -> 10 -> 11
+console.log(mergeSortedLists(linkedListOne, linkedListTwo)); // 1 -> 2 -> 3 -> 4 -> 5
