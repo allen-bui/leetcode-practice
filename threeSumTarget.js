@@ -1,3 +1,6 @@
+// Time Complexity  - O(N^2)
+// Space Complexity - O(N)
+
 function threeSum(arr, target) {
 
   arr.sort((a, b) => a - b);
@@ -30,6 +33,3 @@ function threeSum(arr, target) {
 }
 
 console.log(threeSum([5, 2, 3, 6, 12, 8, 9, 10], 21));
-
-// [5, 2, 3, 6, 12, 8, 9, 10]
-//  i  j
