@@ -1,6 +1,6 @@
 /**
- * @Time  - O(N^2)
- * @Space - O(1)
+ * @Time  - O(N)
+ * @Space - O(N)
  */
 var lengthOfLongestSubstring = function(s) {
 
