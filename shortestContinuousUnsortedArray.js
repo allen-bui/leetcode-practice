@@ -1,6 +1,8 @@
+// LeetCode Problem # 581 - https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
+
 /**
- * @param {number[]} nums
- * @return {number}
+ * @Time  - O(N)
+ * @Space - O(1)
  */
 var findUnsortedSubarray = function(nums) {
 
