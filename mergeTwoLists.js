@@ -8,34 +8,33 @@ class Node {
   }
 }
 
-function mergeSortedLists(listOne, listTwo) {
+function mergeLinkedList(listOne, listTwo) {
 
-  let mergeSortedLists = new Node();
-  let current = mergeSortedLists;
+  let mergedList = new Node();
+  let current = mergedList;
 
   while (listOne && listTwo) {
-
     if (listOne.value < listTwo.value) {
-      mergeSortedLists.next = new Node(listOne.value);
+      mergedList.next = new Node(listOne.value);
       listOne = listOne.next;
     } else {
-      mergeSortedLists.next = new Node(listTwo.value);
+      mergedList.next = new Node(listTwo.value);
       listTwo = listTwo.next;
     }
-    mergeSortedLists = mergeSortedLists.next;
+    mergedList = mergedList.next;
   }
 
-  if (listOne) mergeSortedLists.next = listOne;
-  if (listTwo) mergeSortedLists.next = listTwo;
+  if (listOne) mergedList.next = listOne;
+  if (listTwo) mergedList.next = listTwo;
 
   return current.next;
 }
 
 const linkedListOne = new Node(1);
 linkedListOne.next = new Node(3);
+linkedListOne.next.next = new Node(5);
 
 const linkedListTwo = new Node(2);
 linkedListTwo.next = new Node(4);
-linkedListTwo.next.next = new Node(5);
 
-console.log(mergeSortedLists(linkedListOne, linkedListTwo)); // 1 -> 2 -> 3 -> 4 -> 5
+console.log(mergeLinkedList(linkedListOne, linkedListTwo));
