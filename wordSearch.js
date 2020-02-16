@@ -1,3 +1,10 @@
+// LeetCode Problem # 79 - https://leetcode.com/problems/word-search/
+
+/**
+ * @Time  - O(N), where N is the number of letters in the grid
+ * @Space - O(N), where N is the number of letters on the call stack for recursive calls
+ */
+
 function wordSearch(board, word) {
   for (let i = 0; i < board.length; ++i) {
     for (let j = 0; j < board[i].length; ++j) {
