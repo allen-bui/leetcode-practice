@@ -1,3 +1,9 @@
+/**
+ *
+ * @Time  - O(N), where N is the number of points on the grid
+ * @Space - O(N), where N is the number of items on the call stack
+ */
+
 function isTherePath(board) {
 
   if (dfs(board, 0, 0)) return true;
