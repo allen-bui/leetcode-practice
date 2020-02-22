@@ -9,39 +9,41 @@ function wordSearch(board, word) {
 
   for (let row = 0; row < board.length; ++row) {
     for (let col = 0; col < board[row].length; ++col) {
-      if (board[row][col] === word[0] && dfs(row, col, 0, word, board)) {
+      if (word[0] === board[row][col] && dfs(board, row, col, 0, word)) {
         return true;
       }
     }
   }
   return false;
+}
 
-  // helper dfs function
-  function dfs(row, col, count, word, board) {
+function dfs(board, row, col, count, word) {
 
-    if (count === word.length) return true;
-    if (row < 0 || col < 0 || row >= board.length || col >= board[row].length || board[row][col] !== word[count]) {
-      return false;
-    }
-    const temp = board[row][col];
-    board[row][col] = null;
-    const found =
-      dfs(row + 1, col, count + 1, word, board)
-      || dfs(row - 1, col, count + 1, word, board)
-      || dfs(row, col + 1, count + 1, word, board)
-      || dfs(row, col - 1, count + 1, word, board);
-    board[row][col] = temp;
-    return found;
-  }
+  if (word.length === count) return true;
+  if (
+    row < 0
+    || col < 0
+    || row >= board.length
+    || col >= board[row].length
+    || board[row][col] !== word[count]
+  ) return false;
+
+  const temp = board[row][col];
+  board[row][col] = null;
+  const found = dfs(board, row + 1, col, count + 1, word)
+  || dfs(board, row - 1, col, count + 1, word)
+  || dfs(board, row, col + 1, count + 1, word)
+  || dfs(board, row, col - 1, count + 1, word);
+  board[row][col] = temp;
+  return found;
 }
 
 const board = [
-  ['B', 'I', 'B', 'S', 'A'],
-  ['O', 'L', 'L', 'I', 'E'],
-  ['O', 'O', 'C', 'S', 'I'],
-  ['L', 'Y', 'A', 'Y', 'L'],
-  ['P', 'E', 'E', 'V', 'O'],
-]
+  ['A', 'A', 'H', 'A', 'A'],
+  ['A', 'A', 'E', 'A', 'A'],
+  ['A', 'A', 'L', 'A', 'A'],
+  ['A', 'A', 'L', 'A', 'A'],
+  ['A', 'A', 'O', 'A', 'A'],
+];
 
-console.log(wordSearch(board, 'BIBS')); // true
-console.log(wordSearch(board, 'OLLIEISCOOLYAY')); // true
+console.log(wordSearch(board, 'HELLO')); // true
