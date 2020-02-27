@@ -2,25 +2,26 @@
 
 /**
  * @Time  - O(N)
- * @Space - O(N)
+ * @Space - O(1)
  */
 var sortArrayByParityII = function(A) {
 
-  const odds = [];
-  const evens = [];
-  const results = [];
+  const result = [];
+  let even = 0;
+  let odd = 1;
 
   for (let i = 0; i < A.length; ++i) {
-    if (A[i] % 2 === 0) evens.push(A[i]);
-    else odds.push(A[i]);
+    if (A[i] % 2 === 0) {
+      result[even] = A[i];
+      even += 2;
+    } else {
+      result[odd] = A[i];
+      odd += 2;
+    }
   }
-
-  for (let i = 0; i < odds.length; ++i) {
-    results.push(evens[i]);
-    results.push(odds[i]);
-  }
-  return results;
+  return result;
 };
 
 const arr = [4, 2, 5, 7];
 console.log(sortArrayByParityII(arr)); // [4, 5, 2, 7]
+
