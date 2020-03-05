@@ -13,9 +13,6 @@ function snakeSum(board, targetSum) {
 function dfs(row, col, board, currentPath = [], targetSum) {
 
   const currentSum = currentPath.reduce((a, b) => a + b, 0);
-  if (currentSum === targetSum) {
-    return 1;
-  }
 
   if (
     row < 0
@@ -26,14 +23,19 @@ function dfs(row, col, board, currentPath = [], targetSum) {
     || currentSum > targetSum
   ) return 0;
 
+  if (currentSum === targetSum) {
+    return 1;
+  }
+
   currentPath.push(board[row][col]);
   const temp = board[row][col];
   board[row][col] = 0;
-  dfs(row + 1, col, board, currentPath, targetSum);
-  dfs(row - 1, col, board, currentPath, targetSum);
-  dfs(row, col + 1, board, currentPath, targetSum);
-  dfs(row, col - 1, board, currentPath, targetSum);
+  const found = dfs(row + 1, col, board, currentPath, targetSum)
+  || dfs(row - 1, col, board, currentPath, targetSum)
+  || dfs(row, col + 1, board, currentPath, targetSum)
+  || dfs(row, col - 1, board, currentPath, targetSum);
   board[row][col] = temp;
+  return found;
 }
 
 const board = [
@@ -44,4 +46,4 @@ const board = [
   [4, 6, 9, 3, 4],
 ];
 
-console.log(snakeSum(board, 4)); // all results
+console.log(snakeSum(board, 10)); // all results
