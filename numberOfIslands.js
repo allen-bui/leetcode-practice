@@ -9,8 +9,8 @@ function numberOfIslands(board) {
 
   for (let row = 0; row < board.length; ++row) {
     for (let col = 0; col < board[row].length; ++col) {
-      if (board[row][col] === 1 && dfs(board, row, col)) {
-        numberOfIslands += 1;
+      if (board[row][col] === 1) {
+        numberOfIslands += dfs(board, row, col);
       }
     }
   }
@@ -19,13 +19,12 @@ function numberOfIslands(board) {
 
 function dfs(board, row, col) {
 
-  if (
-    row < 0
+  if (row < 0
     || col < 0
     || row >= board.length
     || col >= board[row].length
     || board[row][col] === 0
-  ) return false;
+  ) return 0;
 
   board[row][col] = 0;
   dfs(board, row + 1, col);
@@ -36,11 +35,11 @@ function dfs(board, row, col) {
 }
 
 const board = [
-  [1, 1, 1, 1, 1],
-  [1, 0, 0, 0, 0],
-  [0, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1],
-  [1, 1, 0, 1, 1],
-];
+  [1, 1, 1, 1, 0],
+  [1, 1, 1, 1, 0],
+  [0, 0, 0, 0, 0],
+  [1, 1, 0, 0, 1],
+  [1, 1, 1, 1, 0],
+]
 
 console.log(numberOfIslands(board)); // 3
