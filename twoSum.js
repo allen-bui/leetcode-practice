@@ -1,22 +1,16 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-var twoSum = function(nums, target) {
+function twoSum(arr, target) {
 
-  const keys = {};
+  const key = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
-
-    if (complement in keys) {
-      return [keys[complement], i];
+  for (let i = 0; i < arr.length; ++i) {
+    const targetValue = target - arr[i];
+    if (targetValue in key) {
+      return [arr[i], targetValue];
+    } else {
+      key[arr[i]] = true;
     }
-    keys[nums[i]] = i;
   }
-  return null;
-};
+  return false;
+}
 
-// { '2': 1, '7': 0, '-2': 2, '-6': 3 }
-console.log(twoSum([3, 2, 4], 6)); // => [0, 1];
+console.log(twoSum([5, 2, 10, 3, 1], 15)); // [5, 10]
